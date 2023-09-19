@@ -29,6 +29,7 @@ class EventServiceTest {
         EventDto first = result.get(0);
         // liczba ponizszych asercji sygnalizuje, ze klasa moze miec za duzo odpowiedzialnosci
         // powinna zostac podzielona na bardziej specjalistyczne klasy
+        assertThat(first.getId()).isEqualTo(1L);
         assertThat(first.getName()).isEqualTo("Usuwanie przebarwień twarz");
         assertThat(first.getPrice()).isEqualTo(BigDecimal.valueOf(130.0));
         assertThat(first.getFromTime()).isEqualTo(LocalDateTime.of(2023, Month.SEPTEMBER, 13, 12, 00, 00));
@@ -53,6 +54,16 @@ class EventServiceTest {
             pierwszy.setFrom(LocalDateTime.of(2023, Month.SEPTEMBER, 13, 12, 00, 00));
             pierwszy.setTo(LocalDateTime.of(2023, Month.SEPTEMBER, 13, 12, 50, 00));
             return List.of(pierwszy);
+        }
+
+        @Override
+        public void addEvent(EventEntity item) {
+
+        }
+
+        @Override
+        public Long findEventsByDate(LocalDateTime date) {
+            return null;
         }
 
 

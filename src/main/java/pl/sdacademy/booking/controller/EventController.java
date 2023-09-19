@@ -10,13 +10,15 @@ public class EventController {
     private final EventService eventService;
 
     public EventController() {
+        // nienajlepsze rozwiazanie - skrot by moc zaprezentowac pseudo controller
         this.eventService = new EventService(new EventRepositoryImp());
     }
 
-    public void presentEvents() {
-        System.out.println("\n WIZYTY ");
-        eventService.findAllEvents()
-                .forEach(eventDto -> System.out.println(eventDto));
-        System.out.println("\n KONIEC WIZYT ");
+    public void presentEventSchedule() {
+        System.out.println("\n ----- TERMINARZ SESJI ----- ");
+
+        eventService.findAllEvents().forEach(System.out::println);
+
+        System.out.println(" ----- KONIEC TERMINARZA SESJI ----- ");
     }
 }
