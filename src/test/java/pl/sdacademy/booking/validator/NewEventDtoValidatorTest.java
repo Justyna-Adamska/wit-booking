@@ -89,4 +89,30 @@ class NewEventDtoValidatorTest {
 
         assertThat(result).hasSize(1).contains("To is before from");
     }
+
+    @Test
+    void shouldCheckNameIsNull(){
+        NewEventDto input = NewEventDto.builder()
+                .itemName(null)
+                .fromTime(LocalDateTime.of(2023,10,12,10,30,00))
+                .toTime(LocalDateTime.of(2023,10,12,10,45,00))
+                .build();
+
+        List<String> result = NewEventDtoValidator.validate(input, new TimeNowStub());
+
+        assertThat(result).hasSize(1).contains("Item name is not set");
+    }
+
+    @Test
+    void shouldCheckNameIsEmpty(){
+        NewEventDto input = NewEventDto.builder()
+                .itemName("")
+                .fromTime(LocalDateTime.of(2023,10,12,10,30,00))
+                .toTime(LocalDateTime.of(2023,10,12,10,45,00))
+                .build();
+
+        List<String> result = NewEventDtoValidator.validate(input, new TimeNowStub());
+
+        assertThat(result).hasSize(1).contains("Item name is not set");
+    }
 }
