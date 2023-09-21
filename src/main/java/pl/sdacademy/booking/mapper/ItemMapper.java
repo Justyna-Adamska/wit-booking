@@ -18,7 +18,7 @@ public class ItemMapper {
 
         return ItemDto.builder()
                 .id(entity.getId())
-                .name(entity.getName())
+                .name(name)
                 .price(entity.getPrice())
                 .description(entity.getDescription())
                 .attributes(attributes)
