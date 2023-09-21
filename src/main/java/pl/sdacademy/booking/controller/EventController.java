@@ -1,6 +1,7 @@
 package pl.sdacademy.booking.controller;
 
 import pl.sdacademy.booking.repository.EventRepositoryImp;
+import pl.sdacademy.booking.repository.ItemRepository;
 import pl.sdacademy.booking.repository.ItemRepositoryImpl;
 import pl.sdacademy.booking.service.EventService;
 import pl.sdacademy.booking.service.ItemService;
@@ -11,7 +12,7 @@ public class EventController {
 
     public EventController() {
         // nienajlepsze rozwiazanie - skrot by moc zaprezentowac pseudo controller
-        this.eventService = new EventService(new EventRepositoryImp());
+        this.eventService = new EventService(new ItemRepositoryImpl(),new EventRepositoryImp());
     }
 
     public void presentEventSchedule() {

@@ -3,7 +3,8 @@ package pl.sdacademy.booking.service;
 import lombok.extern.slf4j.Slf4j;
 import pl.sdacademy.booking.data.ItemAttributeEntity;
 import pl.sdacademy.booking.data.ItemEntity;
-import pl.sdacademy.booking.mapper.ItemMapper;
+import pl.sdacademy.booking.mapper.ItemDtoMapper;
+
 import pl.sdacademy.booking.model.ItemDto;
 import pl.sdacademy.booking.model.NewItemDTO;
 import pl.sdacademy.booking.repository.ItemRepository;
@@ -28,8 +29,10 @@ public class ItemService {
 
         List<ItemEntity> itemEntities = itemRepository.findItems();
         for (ItemEntity entity : itemEntities) {
-            ItemDto itemDto = ItemMapper.mapToItemDto(entity);
+            ItemDto itemDto = ItemDtoMapper.map(entity);
             result.add(itemDto);
+
+        //    result.add(ItemDtoMapper.map(entity));
         }
         return result;
     }
@@ -45,4 +48,6 @@ public class ItemService {
         itemRepository.addItem(itemEntity);
             return "Item zapisany";
 }
+
+
 }

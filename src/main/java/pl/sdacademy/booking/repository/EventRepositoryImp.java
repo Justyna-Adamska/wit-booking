@@ -13,6 +13,8 @@ import java.util.List;
 public class EventRepositoryImp implements EventRepository {
     private EntityManager entityManager;
 
+
+
     public EventRepositoryImp() {
         entityManager = DatabaseUtil.getEntityManager();
     }

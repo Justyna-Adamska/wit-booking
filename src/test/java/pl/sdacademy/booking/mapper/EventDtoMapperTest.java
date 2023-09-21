@@ -12,7 +12,7 @@ import java.time.Month;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class EventMapperTest {
+class EventDtoMapperTest {
 
     @Test
     void shouldMapEventEntityToEventDto() {
@@ -29,7 +29,7 @@ class EventMapperTest {
 
         eventEntity.setItem(itemEntity);
 
-        EventDto eventDto = EventMapper.mapToEventDto(eventEntity);
+        EventDto eventDto = EventDtoMapper.mapToEventDto(eventEntity);
 
         assertThat(eventDto.getId()).isEqualTo(1L);
         assertThat(eventDto.getName()).isEqualTo("Usuwanie przebarwień twarz");
@@ -41,7 +41,7 @@ class EventMapperTest {
     @Test
     public void testMapToEventDtoWithNullEntity() {
 
-        EventDto dto = EventMapper.mapToEventDto(null);
+        EventDto dto = EventDtoMapper.mapToEventDto(null);
 
         assertNull(dto);
     }
