@@ -4,7 +4,11 @@ import org.junit.jupiter.api.Test;
 import pl.sdacademy.booking.data.EventEntity;
 import pl.sdacademy.booking.data.ItemEntity;
 import pl.sdacademy.booking.model.EventDto;
+import pl.sdacademy.booking.model.ItemDto;
+import pl.sdacademy.booking.model.NewEventDto;
+import pl.sdacademy.booking.model.NewItemDTO;
 import pl.sdacademy.booking.repository.EventRepository;
+import pl.sdacademy.booking.repository.ItemRepository;
 
 
 import java.math.BigDecimal;
@@ -21,7 +25,8 @@ class EventServiceTest {
 
     @Test
     void shouldResultAllItemsInDbAsListOfDto() {
-        sut = new EventService(new EventServiceTest.TestEventRepository());
+        ItemRepository itemRepository = new ItemServiceTest.TestItemRepository();
+        sut = new EventService(itemRepository, new EventServiceTest.TestEventRepository());
 
         List<EventDto> result = sut.findAllEvents();
 
@@ -51,6 +56,7 @@ class EventServiceTest {
             first.setPrice(BigDecimal.valueOf(130.0));
             EventEntity pierwszy = new EventEntity();
             pierwszy.setItem(first);
+            pierwszy.setId(1);
             pierwszy.setFrom(LocalDateTime.of(2023, Month.SEPTEMBER, 13, 12, 00, 00));
             pierwszy.setTo(LocalDateTime.of(2023, Month.SEPTEMBER, 13, 12, 50, 00));
             return List.of(pierwszy);

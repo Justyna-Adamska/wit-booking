@@ -69,7 +69,7 @@ class ItemServiceTest {
 
         @Override
         public Long findItemByName(String name) {
-            return null;
+            return 1L;
         }
     }
 }
